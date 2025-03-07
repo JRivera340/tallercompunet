@@ -7,13 +7,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import java.io.IOException;
 
-/**
- * Servlet para agregar un vehículo a un conductor
- */
 @WebServlet("/addVehicle")
 public class AddVehicleServlet extends HttpServlet {
+
+    @Autowired
+    private VehicleServices vehicleService;
+
+    @Override
+    public void init() throws ServletException {
+        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,7 +35,6 @@ public class AddVehicleServlet extends HttpServlet {
         String conductorId = request.getParameter("conductorId");
 
         Vehicle vehicle = new Vehicle(id, placa, cilindraje, tipoCombustible, numeroMotor, marca, modelo);
-        VehicleServices vehicleService = (VehicleServices) getServletContext().getAttribute("vehicleService");
         vehicleService.addVehicleToDriver(vehicle, conductorId);
         response.sendRedirect("listDrivers");
     }

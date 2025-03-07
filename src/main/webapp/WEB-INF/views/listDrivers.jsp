@@ -30,6 +30,6 @@
     <% } %>
 </table>
 <br>
-<a href="index.jsp">Volver al inicio</a>
+<a href="../../index.jsp">Volver al inicio</a>
 </body>
 </html>

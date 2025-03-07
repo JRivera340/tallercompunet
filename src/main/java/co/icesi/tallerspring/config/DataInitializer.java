@@ -22,7 +22,7 @@ public class DataInitializer {
     public void init() {
         System.out.println("=== Cargando datos iniciales en Spring ===");
 
-        // ✅ Primero, creamos y guardamos los conductores
+        // Crear conductores
         Driver driver1 = new Driver("01", "Juan Amor", "Profesor", 1, "114382811");
         Driver driver2 = new Driver("02", "Joshua Rivera", "Monitor", 2, "114629291");
         Driver driver3 = new Driver("03", "Joseph Velez", "Estudiante", 1, "11202392");
@@ -31,20 +31,19 @@ public class DataInitializer {
         driverService.createDriver(driver2);
         driverService.createDriver(driver3);
 
-        // ✅ Luego, confirmamos que los conductores fueron guardados
-        System.out.println("Conductores guardados en la base de datos:");
+        System.out.println("Conductores guardados:");
         driverService.findAllDrivers().forEach(driver -> System.out.println("- " + driver.getNombre()));
 
-        // ✅ Ahora sí, creamos y asignamos los vehículos a los conductores ya existentes
+        // Crear vehículos
         Vehicle vehicle1 = new Vehicle("V001", "ABC123", "1600", "Gasolina", "MOTORA123B12", "Toyota", 2021);
         Vehicle vehicle2 = new Vehicle("V002", "BCD234", "2000", "Gasolina", "MOTORB123C34", "Mazda", 2020);
         Vehicle vehicle3 = new Vehicle("V003", "CDE345", "1800", "Gasolina", "MOTORC123D56", "Nissan", 2019);
 
-        // 🚀 Ahora sí podemos agregar vehículos sin errores
         try {
-            vehicleService.addVehicleToDriver(vehicle1, "01");
-            vehicleService.addVehicleToDriver(vehicle2, "02");
-            vehicleService.addVehicleToDriver(vehicle3, "03");
+            // Usar el número de identificación (numIdentificacion) para asignar vehículos
+            vehicleService.addVehicleToDriver(vehicle1, driver1.getNumIdentificacion());
+            vehicleService.addVehicleToDriver(vehicle2, driver2.getNumIdentificacion());
+            vehicleService.addVehicleToDriver(vehicle3, driver3.getNumIdentificacion());
         } catch (IllegalArgumentException e) {
             System.err.println("❌ Error al asignar vehículos: " + e.getMessage());
         }

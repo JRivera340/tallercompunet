@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-/**
- * Servicio para gestionar vehículos
- */
 @Service
 public class VehicleServices {
 
@@ -34,12 +31,10 @@ public class VehicleServices {
         if (vehicleRepository.existByPlaca(vehicle.getPlaca())) {
             throw new IllegalArgumentException("Ya existe un vehículo con la placa: " + vehicle.getPlaca());
         }
-
         Driver driver = driverService.findDriver(id);
         if (driver == null) {
-            throw new IllegalArgumentException("No se encontró un conductor con el número de identificación: " + id);
+            throw new IllegalArgumentException("No se encontró un conductor con el ID: " + id);
         }
-
         driver.addVehicle(vehicle);
         vehicleRepository.save(vehicle);
     }

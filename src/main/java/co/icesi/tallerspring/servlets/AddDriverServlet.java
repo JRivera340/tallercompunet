@@ -8,14 +8,19 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import java.io.IOException;
 
-/**
- * Servlet para agregar un conductor
- */
 @WebServlet("/addDriver")
 public class AddDriverServlet extends HttpServlet {
+
+    @Autowired
+    private DriverServices driverService;
+
+    @Override
+    public void init() throws ServletException {
+        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,9 +38,7 @@ public class AddDriverServlet extends HttpServlet {
         String numIdentificacion = request.getParameter("numIdentificacion");
 
         Driver driver = new Driver(id, name, cargo, tipoIdentificacion, numIdentificacion);
-        DriverServices driverService = (DriverServices) getServletContext().getAttribute("driverService");
         driverService.createDriver(driver);
-
         response.sendRedirect("listDrivers");
     }
 }

@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Clase que representa un conductor
- */
 public class Driver implements Serializable {
 
     private String id;
@@ -44,5 +41,7 @@ public class Driver implements Serializable {
     public List<Vehicle> getVehicles() { return vehicles; }
     public void setVehicles(List<Vehicle> vehicles) { this.vehicles = vehicles; }
 
-    public void addVehicle(Vehicle vehicle) { this.vehicles.add(vehicle); }
+    public void addVehicle(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
 }

@@ -2,9 +2,6 @@ package co.icesi.tallerspring.model;
 
 import java.io.Serializable;
 
-/**
- * Clase que representa un vehículo
- */
 public class Vehicle implements Serializable {
 
     private String id;

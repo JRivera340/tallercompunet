@@ -1,26 +1,27 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
-    <display-name>TallerSpring</display-name>
-
-    <!-- Configuración de Spring con Java Config -->
+    <!-- Indicar a Spring que use AnnotationConfigWebApplicationContext -->
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
     </context-param>
 
+    <!-- Clase de configuración de Spring -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>co.icesi.tallerspring.config.AppConfig</param-value>
     </context-param>
 
+    <!-- Listener para cargar el contexto raíz de Spring -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- Configurar el DispatcherServlet -->
+    <!-- Configuración del DispatcherServlet (usamos init-param vacío para no buscar XML adicional) -->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -36,10 +37,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- Definir la página de inicio -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
-
 </web-app>

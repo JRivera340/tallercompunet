@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-/**
- * Servicio para gestionar conductores
- */
 @Service
 public class DriverServices {
 
@@ -24,8 +21,8 @@ public class DriverServices {
     }
 
     public void createDriver(Driver driver) {
-        driverRepository.save(driver);  // ✅ Se guarda sin verificar
-        System.out.println("🚀 Conductor guardado: " + driver.getNombre() + " con ID: " + driver.getId());
+        driverRepository.save(driver);
+        System.out.println("Conductor guardado: " + driver.getNombre() + " con ID: " + driver.getId());
     }
 
     public Driver findDriver(String numId) {

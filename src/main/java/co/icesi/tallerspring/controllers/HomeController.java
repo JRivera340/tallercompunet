@@ -9,8 +9,8 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("/index.jsp");
-        modelAndView.addObject("message", "Bienvenido a Taller Spring con Jakarta EE 9+ y Tomcat 10.1.35");
-        return modelAndView;
+        ModelAndView mv = new ModelAndView("index"); // Resolverá a /WEB-INF/views/index.jsp
+        mv.addObject("message", "Bienvenido a Taller Spring con Jakarta EE 9+ y Tomcat 10.1.35");
+        return mv;
     }
 }

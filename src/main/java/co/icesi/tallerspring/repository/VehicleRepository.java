@@ -5,9 +5,6 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Repositorio para gestionar vehículos
- */
 @Repository
 public class VehicleRepository {
 

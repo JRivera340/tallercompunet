@@ -7,18 +7,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import java.io.IOException;
 
-/**
- * Servlet para buscar un vehículo por su placa
- */
 @WebServlet("/searchVehicle")
 public class SearchVehicleServlet extends HttpServlet {
+
+    @Autowired
+    private VehicleServices vehicleService;
+
+    @Override
+    public void init() throws ServletException {
+        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String placa = request.getParameter("placa");
-        VehicleServices vehicleService = (VehicleServices) getServletContext().getAttribute("vehicleService");
         Vehicle vehicle = vehicleService.getVehicle(placa);
         request.setAttribute("vehicle", vehicle);
         request.getRequestDispatcher("WEB-INF/views/searchVehicle.jsp").forward(request, response);
