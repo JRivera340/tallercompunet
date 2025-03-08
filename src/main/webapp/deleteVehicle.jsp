@@ -66,6 +66,20 @@
       background: linear-gradient(45deg, #0056b3, #00a8cc);
     }
 
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+
+    .message.error {
+      color: red;
+    }
+
+    .message.success {
+      color: green;
+    }
+
     a {
       display: inline-block;
       margin-top: 20px;
@@ -90,6 +104,19 @@
   Placa del Vehículo: <input type="text" name="placa" required><br>
   <input type="submit" value="Eliminar">
 </form>
+
+<%
+  // Tomamos los mensajes que el servlet pudo haber puesto
+  String errorMessage = (String) request.getAttribute("errorMessage");
+  String successMessage = (String) request.getAttribute("successMessage");
+%>
+
+<% if (errorMessage != null) { %>
+<p class="message error"><%= errorMessage %></p>
+<% } else if (successMessage != null) { %>
+<p class="message success"><%= successMessage %></p>
+<% } %>
+
 <br>
 <a href="index.jsp">Volver al inicio</a>
 </body>

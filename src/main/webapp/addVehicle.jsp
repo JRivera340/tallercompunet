@@ -3,6 +3,7 @@
 <head>
     <title>Agregar Vehículo</title>
     <style>
+        /* Fuente moderna desde Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         * {
@@ -66,6 +67,20 @@
             background: linear-gradient(45deg, #0056b3, #00a8cc);
         }
 
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        .message.error {
+            color: red;
+        }
+
+        .message.success {
+            color: green;
+        }
+
         a {
             display: inline-block;
             margin-top: 20px;
@@ -86,6 +101,7 @@
 <header>
     <h1>Agregar Nuevo Vehículo</h1>
 </header>
+
 <form action="addVehicle" method="post">
     ID: <input type="text" name="id" required><br>
     Placa: <input type="text" name="placa" required><br>
@@ -94,9 +110,22 @@
     Número Motor: <input type="text" name="numeroMotor" required><br>
     Marca: <input type="text" name="marca" required><br>
     Modelo: <input type="number" name="modelo" required><br>
-    Numero de Identificación del Conductor: <input type="text" name="conductorId" required><br>
+    ID del Conductor: <input type="text" name="conductorId" required><br>
     <input type="submit" value="Agregar Vehículo">
 </form>
+
+<%
+    // Tomamos los mensajes de error o éxito
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    String successMessage = (String) request.getAttribute("successMessage");
+%>
+
+<% if (errorMessage != null) { %>
+<p class="message error"><%= errorMessage %></p>
+<% } else if (successMessage != null) { %>
+<p class="message success"><%= successMessage %></p>
+<% } %>
+
 <br>
 <a href="index.jsp">Volver al inicio</a>
 </body>

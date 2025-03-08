@@ -67,6 +67,20 @@
             background: linear-gradient(45deg, #0056b3, #00a8cc);
         }
 
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        .message.error {
+            color: red;
+        }
+
+        .message.success {
+            color: green;
+        }
+
         a {
             display: inline-block;
             margin-top: 20px;
@@ -87,6 +101,7 @@
 <header>
     <h1>Agregar Nuevo Conductor</h1>
 </header>
+
 <form action="addDriver" method="post">
     ID: <input type="text" name="id" required><br>
     Nombre: <input type="text" name="name" required><br>
@@ -95,6 +110,18 @@
     Número de Identificación: <input type="text" name="numIdentificacion" required><br>
     <input type="submit" value="Agregar Conductor">
 </form>
+
+<%
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    String successMessage = (String) request.getAttribute("successMessage");
+%>
+
+<% if (errorMessage != null) { %>
+<p class="message error"><%= errorMessage %></p>
+<% } else if (successMessage != null) { %>
+<p class="message success"><%= successMessage %></p>
+<% } %>
+
 <br>
 <a href="index.jsp">Volver al inicio</a>
 </body>
