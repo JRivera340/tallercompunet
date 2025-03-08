@@ -10,7 +10,7 @@
     <li><a href="listDrivers">Listar conductores</a></li>
     <li><a href="addVehicle.jsp">Agregar vehículo</a></li>
     <li><a href="addDriver.jsp">Agregar conductor</a></li>
-    <li><a href="WEB-INF/views/searchVehicle.jsp">Buscar vehículo</a></li>
+    <li><a href="searchVehicle.jsp">Buscar vehículo</a></li>
     <li><a href="deleteVehicle.jsp">Eliminar vehículo</a></li>
     <li><a href="searchDriverVehicles.jsp">Buscar vehículos de un conductor</a></li>
 </ul>

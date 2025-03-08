@@ -28,6 +28,6 @@ public class SearchVehicleServlet extends HttpServlet {
         String placa = request.getParameter("placa");
         Vehicle vehicle = vehicleService.getVehicle(placa);
         request.setAttribute("vehicle", vehicle);
-        request.getRequestDispatcher("WEB-INF/views/searchVehicle.jsp").forward(request, response);
+        request.getRequestDispatcher("searchVehicle.jsp").forward(request, response);
     }
 }

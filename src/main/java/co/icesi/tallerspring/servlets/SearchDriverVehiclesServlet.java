@@ -28,6 +28,6 @@ public class SearchDriverVehiclesServlet extends HttpServlet {
         String numIdentificacion = request.getParameter("numIdentificacion");
         Driver driver = driverService.findDriver(numIdentificacion);
         request.setAttribute("driver", driver);
-        request.getRequestDispatcher("WEB-INF/views/searchDriverVehicles.jsp").forward(request, response);
+        request.getRequestDispatcher("/searchDriverVehicles.jsp").forward(request, response);
     }
 }

@@ -32,6 +32,6 @@
     <% } %>
 </table>
 <br>
-<a href="../../index.jsp">Volver al inicio</a>
+<a href="<%= request.getContextPath() %>/index.jsp">Volver al inicio</a>
 </body>
 </html>

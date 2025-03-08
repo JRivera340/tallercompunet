@@ -26,6 +26,6 @@ public class DeleteVehicleServlet extends HttpServlet {
             throws ServletException, IOException {
         String placa = request.getParameter("placa");
         vehicleService.deleteVehicleByPlaca(placa);
-        response.sendRedirect("listDrivers");
+        response.sendRedirect("listVehicles");
     }
 }

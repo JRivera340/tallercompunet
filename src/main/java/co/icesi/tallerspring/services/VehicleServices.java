@@ -1,5 +1,6 @@
 package co.icesi.tallerspring.services;
 
+
 import co.icesi.tallerspring.model.Driver;
 import co.icesi.tallerspring.model.Vehicle;
 import co.icesi.tallerspring.repository.VehicleRepository;
@@ -27,6 +28,16 @@ public class VehicleServices {
         return vehicleRepository.findVehicle(placa);
     }
 
+    // Método existente (alias de getVehicle)
+    public Vehicle searchVehicle(String placa) {
+        return getVehicle(placa);
+    }
+
+    // NUEVO: Buscar vehículo por ID
+    public Vehicle searchVehicleById(String id) {
+        return vehicleRepository.findVehicleById(id);
+    }
+
     public void addVehicleToDriver(Vehicle vehicle, String id) {
         if (vehicleRepository.existByPlaca(vehicle.getPlaca())) {
             throw new IllegalArgumentException("Ya existe un vehículo con la placa: " + vehicle.getPlaca());
@@ -37,6 +48,7 @@ public class VehicleServices {
         }
         driver.addVehicle(vehicle);
         vehicleRepository.save(vehicle);
+        System.out.println("Vehículo agregado exitosamente al conductor: " + driver.getNombre());
     }
 
     public void deleteVehicleByPlaca(String placa) {
@@ -45,5 +57,6 @@ public class VehicleServices {
             throw new IllegalArgumentException("No existe un vehículo con la placa: " + placa);
         }
         vehicleRepository.delete(vehicle);
+        System.out.println("Se ha eliminado el vehículo con placa: " + placa);
     }
 }
