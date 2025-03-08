@@ -23,9 +23,9 @@ public class DataInitializer {
         System.out.println("=== Cargando datos iniciales en Spring ===");
 
         // Crear conductores
-        Driver driver1 = new Driver("01", "Juan Amor", "Profesor", 1, "114382811");
-        Driver driver2 = new Driver("02", "Joshua Rivera", "Monitor", 2, "114629291");
-        Driver driver3 = new Driver("03", "Joseph Velez", "Estudiante", 1, "11202392");
+        Driver driver1 = new Driver("01", "Juan Amor", "Profesor", 1, "1120");
+        Driver driver2 = new Driver("02", "Joshua Rivera", "Monitor", 2, "1121");
+        Driver driver3 = new Driver("03", "Joseph Velez", "Estudiante", 1, "1122");
 
         driverService.createDriver(driver1);
         driverService.createDriver(driver2);
